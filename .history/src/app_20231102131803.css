@@ -1,0 +1,7 @@
+@import '@fontsource-variable/reem-kufi';
+@import '@fontsource-variable/quicksand';
+@import '@fontsource/hina-mincho';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
