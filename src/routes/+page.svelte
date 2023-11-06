@@ -19,7 +19,7 @@
 	import { Check, ChevronsUpDown } from 'lucide-svelte';
 	import * as Command from '$lib/components/ui/command';
 	import * as Popover from '$lib/components/ui/popover';
-	import { cn } from '$lib/utils';
+	import { cn, formatDate } from '$lib/utils.ts';
 	import { tick } from 'svelte';
 	import * as ContextMenu from '$lib/components/ui/context-menu';
 	import { buttonVariants } from '$lib/components/ui/button';
@@ -56,6 +56,8 @@
 	import { Progress } from '$lib/components/ui/progress';
 	import { Skeleton } from '$lib/components/ui/skeleton';
 	import { Slider } from '$lib/components/ui/slider';
+
+	export let data;
 
 	let numvalue = 13;
 	onMount(() => {
@@ -125,6 +127,18 @@
 			non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 		</p>
 	</div>
+
+	<section>
+		<ul class="posts">
+			{#each data.posts as post}
+				<li class="post">
+					<a href={post.slug} class="title">{post.title}</a>
+					<p class="date">{formatDate(post.date)}</p>
+					<p class="description">{post.description}</p>
+				</li>
+			{/each}
+		</ul>
+	</section>
 
 	<div class="grid grid-cols-3 gap-[1rem]">
 		<div
